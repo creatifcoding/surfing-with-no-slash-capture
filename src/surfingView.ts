@@ -220,18 +220,6 @@ export class SurfingView extends ItemView {
 					repeat: input.isAutoRepeat
 				});
 
-				// TODO: Allow set hotkey in webview;
-				if (emulatedKeyboardEvent.key === '/') {
-					if (!this.plugin.settings.ignoreList.find((item: string) => this.currentUrl.contains(item.toLowerCase()))) {
-						webContents.executeJavaScript(`
-											document.activeElement instanceof HTMLInputElement
-										`, true).then((result: any) => {
-							if (!result) this.headerBar.focus();
-						});
-						return;
-					}
-				}
-
 
 				// TODO Detect pressed hotkeys if exists in default hotkeys list
 				// If so, prevent default and execute the hotkey
